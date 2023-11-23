@@ -11,7 +11,6 @@ import ItemScreen from './screens/Client/Item';
 import PricingScreen from './screens/Client/Pricing';
 import RegisterScreen from './screens/Client/Register';
 import CreateItemScreen from './screens/Client/CreateItem';
-import CheckoutForm from './screens/Client/CheckoutForm';
 
 // Admin Delirate
 import AdminLayout from './screens/Admin/Admin';
@@ -21,6 +20,9 @@ import DashboardScreen from './screens/Admin/Dashboard';
 // Introdution
 import IntroLayout from './screens/Intro/Layout';
 import LandingScreen from './screens/Intro/Landing';
+import SuccessScreen from './screens/Client/Success';
+import CheckoutScreen from './screens/Client/Checkout';
+import LoaderScreen from './screens/Client/Loader';
 
 const router = createBrowserRouter([
     {
@@ -34,7 +36,9 @@ const router = createBrowserRouter([
             { path: '/items', element: <ItemScreen /> },
             { path: '/pricing', element: <PricingScreen /> },
             { path: '/create', element: <CreateItemScreen /> },
-            { path: '/checkout', element: <CheckoutForm /> },
+            { path: '/checkout', element: <CheckoutScreen /> },
+            { path: '/success', element: <SuccessScreen /> },
+            { path: '/stripe-success', element: <LoaderScreen /> },
             
         ],
     },

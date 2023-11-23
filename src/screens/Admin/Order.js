@@ -12,19 +12,21 @@ export default function OrderScreen() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(
-                    'http://localhost:8080/order/get_orders_by_store/653d18ac6c4d593e8018e27d',
-                );
-                // console.log(response.data); // Assuming your data is in response.data
-                const data = response.data;
-                if (data.success) {
-                    let temp = data.data;
-                    for(let i = 0; i < temp.length; i++) {
-                        let qrcode = await QRCode.toDataURL(temp[i].link);
-                        temp[i].qrcode = qrcode;
+                if(orders.length == 0) {
+                    const response = await axios.get(
+                        'http://localhost:8080/order/get_orders_by_store/6558be56f9a4f960f57af04b',
+                    );
+                    // console.log(response.data); // Assuming your data is in response.data
+                    const data = response.data;
+                    if (data.success) {
+                        let temp = data.data;
+                        for(let i = 0; i < temp.length; i++) {
+                            let qrcode = await QRCode.toDataURL(temp[i].link);
+                            temp[i].qrcode = qrcode;
+                        }
+                        setOrders([ ...temp ])
+                        setSelectedItems([...orders[0].items])
                     }
-                    setOrders([ ...temp ])
-                    setSelectedItems([...orders[0].items])
                 }
                 // Process your data and set state here
             } catch (error) {

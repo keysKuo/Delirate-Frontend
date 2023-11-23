@@ -19,7 +19,7 @@ const nav = [
     { title: 'Contact', path: '/contact' },
 ];
 
-export default function Header() {
+export default function Header( { isShowCart, setIsShowCart }) {
     const [isLogin, setIsLogin] = useState(false);
 
     useEffect(() => {
@@ -29,7 +29,7 @@ export default function Header() {
             setIsLogin(
                 <>
                     <Search placeholder="Search..." />
-                    <Profile info={user} />
+                    <Profile isShowCart={isShowCart} setIsShowCart={setIsShowCart} info={user} />
                 </>,
             );
         } else {

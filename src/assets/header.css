@@ -5,11 +5,11 @@ header {
     justify-content: center;
     text-align: center;
     background: #134E5E;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #71B280, #134E5E);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #71B280, #134E5E); 
-box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
-    position: sticky;
-    top: 0;
+    background: -webkit-linear-gradient(to right, #71B280, #134E5E);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #71B280, #134E5E); 
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+    /* position: sticky;
+    top: 0; */
     z-index: 100;
 }
 

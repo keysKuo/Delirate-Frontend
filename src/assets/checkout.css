@@ -1,0 +1,269 @@
+.checkout-page {
+  overflow: hidden;
+  
+}
+
+.checkout-page .checkout-form {
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+}
+
+.checkout-wrap {
+  flex-direction: row;
+  width: 75%;
+}
+
+.checkout-wrap:after, .checkout-wrap:before {
+  content: "";
+  display: table;
+}
+
+.checkout-main {
+  width: 70%;
+  padding: 2em 2em 0 2em;
+}
+
+.checkout-header {
+  padding-bottom: 1.5em;
+}
+
+.checkout-content {
+  padding-bottom: 1.5em;
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+}
+
+.checkout-sidebar {
+  width: 30%;
+  padding: 1em 1em 0 1em;
+}
+
+.section-header {
+  margin-bottom: 12px;
+}
+
+.layout-flex {
+  display: flex;
+  align-items: baseline;
+}
+
+.section-title {
+  color: #333;
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+}
+
+.field {
+  float: left;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.4em;
+}
+
+.fieldset {
+  margin: -0.4em;
+}
+
+.fieldset::before, .fieldset::after {
+  content: "";
+  display: table;
+}
+
+ .field__label {
+  transition: all .2s ease-out;
+  -webkit-transition: all .2s ease-out;
+}
+
+.field__label {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  box-sizing: border-box;
+  margin-top: 0.4em;
+  margin-left: 1px;
+  padding: 0 0.8em;
+  color: #999;
+  z-index: 1;
+  user-select: none;
+  pointer-events: none;
+  font-size: 1em;
+  transform: translateY(6px);
+}
+.field__label {
+  text-align: left;
+  margin: 0.5em 0;
+  display: block;
+}
+
+.field__input {
+  border-radius: 4px;
+  width: 100%;
+  display: block;
+  box-sizing: border-box;
+  padding: 0.94em 0.8em;
+  border: 1px #d9d9d9 solid;
+  height: 44px;
+  background-color: #fff;
+  color: #333;
+}
+
+.content-box {
+  border: 1px solid #cecdcd;
+  background: #fff;
+  background-clip: padding-box;
+  border-radius: 5px;
+  color: #545454;
+}
+
+.content-box__row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  position: relative;
+  padding: 0.4em;
+}
+
+.radio-wrapper:last-child {
+  margin-bottom: 0;
+}
+
+.radio-wrapper {
+  display: table;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.radio__input, .checkbox__input {
+  display: table-cell;
+}
+.radio__input, .checkbox__input {
+  white-space: nowrap;
+  padding-right: 0.75em;
+}
+
+.content-box .input-checkbox, .content-box .input-radio {
+  border-color: #d9d9d9;
+  background-color: #fff;
+}
+
+.radio__label, .checkbox__label {
+  cursor: pointer;
+  vertical-align: middle;
+  display: table-cell;
+  width: 100%;
+}
+
+.sidebar__header {
+  border-bottom: 1px solid #e1e1e1;
+  margin-top: 15px;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  display: block;
+  background: #fafafa
+}
+
+.sidebar__title, .order-summary-toggle__text {
+  color: #333;
+  font-weight: 600;
+  font-size: 1.15rem;
+  margin-left: 10px;
+  margin-top: 5px;
+  font-family: 'Montserrat';
+}
+
+
+.sidebar-container {
+  padding: 15px;
+  /* height: calc(100vh - 210px); */
+  /* overflow-y: scroll; */
+  background: #fafafa;
+}
+
+.sidebar-item {
+  /* margin-bottom: 15px; */
+  padding-bottom: 20px;
+  display: table;
+  width: 100%;
+}
+
+.sidebar-price {
+  color: #d52220;
+}
+
+.sidebar-image {
+  display: table-cell;
+  width: 24%;
+  vertical-align: top;
+  position: relative;
+}
+
+.sidebar-info {
+  padding-left: 15px;
+  vertical-align: top;
+}
+
+.sidebar-info a {
+  margin-bottom: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.3;
+  display: block;
+}
+
+.variant-title {
+  display: block;
+  font-size: 12px;
+}
+
+.sidebar-footer {
+  padding: 10px;
+}
+
+.cart_subtotal {
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 12px;
+  display: flex;
+}
+
+.cart_btn-checkout {
+  display: block;
+  position: relative;
+  padding-top: 20px;
+}
+
+.cart_btn-checkout:hover {
+  opacity: 0.7;
+}
+
+.total_price {
+  color: #d52220;
+  font-weight: bold;
+}
+
+.cart_btn-checkout {
+  display: block;
+  position: relative;
+  padding-top: 20px;
+}
+
+.sidebar-item-container {
+  min-height: 450px;
+  
+}
+
+.form-outline .form-control~.form-label, .form-check-label{
+  font-size: 13px;
+}
