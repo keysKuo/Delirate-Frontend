@@ -11,7 +11,7 @@ const DividerPart = () => (
             </Grid.Column>
             <Grid.Column className='center-box'>
                 <div className='banner-body'>
-                <div className='center-box mt-4'>
+                <div className='center-box mt-3'>
                 <Image style={{ width: '28rem'}} src={logo1} />
                 </div>
                 <h1 style={{ fontSize: '3rem'}}>The recorded verified origin platform</h1>

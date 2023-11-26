@@ -340,8 +340,7 @@ ul {
 
 .airplane-guide {
   position: absolute;
-  left: 20rem;
-
+  left: 10rem;
 }
 
 .bg-gradient {
@@ -362,9 +361,9 @@ ul {
 }
 
 .banner-body h1 {
-  font-size: 3.0rem;
-  line-height: 3.5rem;
-  font-family: 'Montserrat';
+  font-size: 2rem !important;
+  line-height: 2rem;
+  font-family: 'Monserrat';
 }
 
 .opacity-75 {

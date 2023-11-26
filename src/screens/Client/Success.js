@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import '../../assets/success.css';
 
 export default function SuccessScreen() {
+	// localStorage.removeItem('cartItems');
 	return (
 		<section className="login-main-wrapper">
 			<div className="main-container">
