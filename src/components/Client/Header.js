@@ -16,7 +16,7 @@ const nav = [
     { title: 'About', path: '/about' },
     { title: 'Shops', path: '/items' },
     { title: 'Pricing', path: '/pricing' },
-    { title: 'Contact', path: '/contact' },
+    { title: 'Examples', path: '/examples' },
 ];
 
 export default function Header( { isShowCart, setIsShowCart }) {
@@ -55,8 +55,9 @@ export default function Header( { isShowCart, setIsShowCart }) {
         <>
             <header>
                 <div id="page-header">
-                    <Link to="/">
-                        <Image className="logo" css={{ width: '160px' }} src={logo} />
+                    <Link style={{ fontSize: '1.7rem', color: '#fff'}} to="/">
+                        <Image className="logo" css={{ width: '240px' }} src={logo} />
+                        
                     </Link>
                     <ul className="page-nav">
                         {nav.map((n, index) => (

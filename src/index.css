@@ -92,6 +92,10 @@ ul {
     right: 0;
 }
 
+.card {
+  min-height: 400px !important;
+}
+
 .cart_heading {
   padding: 15px 15px;
   display: block;
@@ -395,4 +399,80 @@ color: #fff !important;  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12
 
 i.fa , i.fab {
   color: #134E5E !important;
+}
+
+.example-intro-container {
+  width: 100%;
+  min-height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+}
+
+.example-intro-header {
+  width: 50%;
+}
+
+.intro-heading {
+  line-height: 1.4;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.intro-title {
+  letter-spacing: .15em;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.intro-slider-title {
+  letter-spacing: .15em;
+  line-height: 1.5;
+  font-size: 14px;
+  margin-bottom: 1rem;
+}
+
+.intro-slider-name {
+  font-size: 2.5rem;
+  line-height: 2.25rem;
+  font-weight: 700;
+  letter-spacing: .1px;
+  margin: 10px 0;
+}
+
+.example-item {
+  width: 31%;
+  height: 300px;
+  overflow: hidden;
+}
+
+.example-item img {
+  transition: 0.5s ease;
+}
+
+
+
+.example-item:hover img{
+  opacity: 0.7;
+}
+
+.example-body {
+  padding: 10px 0;
+  text-align: left;
+}
+
+.example-body p {
+  margin-bottom: 5px;
+  text-transform: uppercase;
+}
+
+.example-name {
+  font-weight: 700;
+  font-size: 15px;
+  
+}
+
+.example-desc {
+  font-size: 13px;
 }

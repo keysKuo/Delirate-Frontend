@@ -23,6 +23,7 @@ import LandingScreen from './screens/Intro/Landing';
 import SuccessScreen from './screens/Client/Success';
 import CheckoutScreen from './screens/Client/Checkout';
 import LoaderScreen from './screens/Client/Loader';
+import ExamplesScreen from './screens/Client/Examples';
 
 const router = createBrowserRouter([
     {
@@ -36,6 +37,7 @@ const router = createBrowserRouter([
             { path: '/items', element: <ItemScreen /> },
             { path: '/pricing', element: <PricingScreen /> },
             { path: '/create', element: <CreateItemScreen /> },
+            { path: '/examples', element: <ExamplesScreen /> },
             { path: '/checkout', element: <CheckoutScreen /> },
             { path: '/success', element: <SuccessScreen /> },
             { path: '/stripe-success', element: <LoaderScreen /> },

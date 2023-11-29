@@ -8,25 +8,23 @@ const LoaderScreen = () => {
 	const [searchParams, setSearchParams] = useSearchParams();
 
 	const orderId = searchParams.get("order_id");
+	const fetchDataPayment = async () => {
+		await axios
+			.put(`${apiUrl}/stripe-success?order_id=${orderId}`)
+			.then((response) => {
+				const result = response.data;
+				if (result.success) {
+					window.location.href = "/success";
+				}
+				console.log(result);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	};
 
-	useEffect(() => {
-		const fetchDataPayment = async () => {
-			await axios
-				.put(`${apiUrl}/stripe-success?order_id=${orderId}`)
-				.then((response) => {
-					const result = response.data;
-					if (result.success) {
-						window.location.href = "/success";
-					}
-					console.log(result);
-				})
-				.catch((err) => {
-					console.log(err);
-				});
-		};
-
-        fetchDataPayment()
-	}, [orderId]);
+	fetchDataPayment()
+	
 	return (
 		<Segment style={{ minHeight: "100vh" }}>
 			<Dimmer active>

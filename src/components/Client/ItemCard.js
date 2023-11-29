@@ -55,7 +55,7 @@ function ItemCard({ items }) {
 			<MDBRow className="justify-content-center">
 				{items.map((item, index) => {
 					return (
-						<MDBCol key={index} md="4">
+						<MDBCol key={index} md="4" sm="12">
 							<MDBCard className="text-black align-items-center hover-zoom">
 								<MDBPopover
 									tag="span"

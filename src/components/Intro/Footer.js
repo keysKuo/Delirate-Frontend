@@ -1,4 +1,5 @@
 import "../../assets/intro.css";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
 	return (
@@ -42,33 +43,33 @@ export default function Footer() {
 														<div className="nav-face logo-front">
 															Home
 														</div>
-														<div className="nav-face logo-back text-green">
+														<Link to="/" className="nav-face logo-back text-green">
 															Home
-														</div>
+														</Link>
 													</li>
 													<li className="navbar-link">
 														<div className="nav-face logo-front">
 															About
 														</div>
-														<div className="nav-face logo-back text-green">
+														<Link to="/about" className="nav-face logo-back text-green">
 															About
-														</div>
+														</Link>
 													</li>
 													<li className="navbar-link">
 														<div className="nav-face logo-front">
 															Shops
 														</div>
-														<div className="nav-face logo-back text-green">
+														<Link to="/shops" className="nav-face logo-back text-green">
 															Shops
-														</div>
+														</Link>
 													</li>
 													<li className="navbar-link">
-														<div className="nav-face logo-front">
+														<div  className="nav-face logo-front">
 															Projects
 														</div>
-														<div className="nav-face logo-back text-green">
+														<Link to="/examples" className="nav-face logo-back text-green">
 															Projects
-														</div>
+														</Link>
 													</li>
 													<li className="navbar-link">
 														<div className="nav-face logo-front">

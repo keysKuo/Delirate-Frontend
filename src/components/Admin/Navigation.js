@@ -2,7 +2,7 @@ import '../../assets/mdb/css/bootstrap.min.css';
 import '../../assets/mdb/css/mdb.min.css';
 import { Link } from 'react-router-dom';
 import { Image, Input } from 'react-ui';
-import logo2 from '../../static/delirate-logo2.png'
+import logo2 from '../../static/delirate_new2.png'
 import { useState } from 'react';
 
 const navLinks = [
