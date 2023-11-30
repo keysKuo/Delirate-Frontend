@@ -10,6 +10,7 @@ import step4 from "../../static/shipping.png";
 import step5 from "../../static/verification.png";
 
 export default function HomeScreen() {
+
 	return (
 		<>
 			<Container className="home-banner">

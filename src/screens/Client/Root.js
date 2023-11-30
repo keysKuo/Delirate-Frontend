@@ -1,44 +1,50 @@
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import Header from "../../components/Client/Header";
 import classes from "../../assets/root.module.css";
 import Footer from "../../components/Client/Footer";
 import { useState, useEffect } from "react";
 import { MDBIcon } from "mdb-react-ui-kit";
-
+import Loader from "../../components/Client/Loader.js";
 import CartItem from "../../components/Client/CartItem";
 
-
-export default function RootLayout() {
+export default function RootLayout({ isLoading, loadingTime }) {
 	const [isShowCart, setIsShowCart] = useState(false);
 	// localStorage.clear();
 	const [cartItems, setCartItems] = useState(() => {
 		const cartItemsJson = localStorage.getItem("cartItems") || "[]";
 		return JSON.parse(cartItemsJson);
 	});
+	const [loading, setLoading] = useState(isLoading);
 
-	const [ totalPrice, setTotalPrice ] = useState(() => {
+	setTimeout(() => {
+		setLoading(false);
+	}, loadingTime);
+
+	const [totalPrice, setTotalPrice] = useState(() => {
 		return cartItems.reduce((accumulator, item) => {
-			return accumulator + (item.price * item.quantity)
-		}, 0)
+			return accumulator + item.price * item.quantity;
+		}, 0);
 	});
 
 	// Effect to update localStorage when cartItems changes
 	useEffect(() => {
-		
 		localStorage.setItem("cartItems", JSON.stringify(cartItems));
 		localStorage.setItem("totalPrice", JSON.stringify(totalPrice));
 	}, [cartItems, totalPrice]);
 
 	const addToCart = (newItem) => {
 		setCartItems((prevItems) => [...prevItems, newItem]);
-		setTotalPrice((prevPrice) => prevPrice + newItem.price)
+		setTotalPrice((prevPrice) => prevPrice + newItem.price);
 	};
 
 	const delFromCart = (index) => {
 		setCartItems((prevItems) =>
 			prevItems.filter((item, idx) => index !== idx)
 		);
-		setTotalPrice((prevPrice) => prevPrice - (cartItems[index].price * cartItems[index].quantity))
+		setTotalPrice(
+			(prevPrice) =>
+				prevPrice - cartItems[index].price * cartItems[index].quantity
+		);
 	};
 
 	const updateQuantity = (index, ops) => {
@@ -49,10 +55,9 @@ export default function RootLayout() {
 					: element;
 			});
 			setCartItems([...newCartItems]);
-			setTotalPrice((prevPrice) => prevPrice + cartItems[index].price)
+			setTotalPrice((prevPrice) => prevPrice + cartItems[index].price);
 		} else {
 			const newCartItems = cartItems.map((element, idx) => {
-
 				return index === idx
 					? {
 							...element,
@@ -64,10 +69,8 @@ export default function RootLayout() {
 					: element;
 			});
 			setCartItems([...newCartItems]);
-			setTotalPrice((prevPrice) => prevPrice - cartItems[index].price)
+			setTotalPrice((prevPrice) => prevPrice - cartItems[index].price);
 		}
-
-		
 	};
 
 	return (
@@ -82,7 +85,7 @@ export default function RootLayout() {
 						addToCart,
 						updateQuantity,
 						delFromCart,
-						totalPrice
+						totalPrice,
 					}}
 				/>
 			</main>
@@ -133,14 +136,25 @@ export default function RootLayout() {
 						<div className="cart_subtotal">
 							<div className="w-50 float-left">Total:</div>
 							<div className="w-50 float-left text-right">
-								<span className="total_price">${totalPrice}</span>
+								<span className="total_price">
+									${totalPrice}
+								</span>
 							</div>
 						</div>
 						<div className="cart_btn-checkout">
-							<button onClick={() => {
-								setIsShowCart(false);
-								window.location.href = '/checkout'
-							}}>Checkout</button>
+							<button
+								onClick={() => {
+									setIsShowCart(false);
+									window.scrollTo(0, 0)
+								}}
+							>
+								<Link
+									to="/checkout"
+									className="d-block w-100 text-light"
+								>
+									Check out
+								</Link>
+							</button>
 						</div>
 					</div>
 				</div>
@@ -165,6 +179,17 @@ export default function RootLayout() {
 				}
 				className="backdrop"
 			></div>
+
+			<div
+				style={
+					loading
+						? { visibility: "visible", opacity: 1 }
+						: { visibility: "hidden", opacity: 0 }
+				}
+				className="loader-layer"
+			>
+				<Loader />
+			</div>
 		</>
 	);
 }

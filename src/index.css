@@ -13,7 +13,12 @@
 
 body {
   background-color: white !important;
+  font-family: 'Monserrat', 'Consolas' !important;
   
+}
+
+h1 {
+  font-family: 'Monserrat', 'Consolas' !important;
 }
 
 main { 
@@ -475,4 +480,23 @@ i.fa , i.fab {
 
 .example-desc {
   font-size: 13px;
+}
+
+.loader-layer {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10000000000;
+  left: 0;
+  top: 0 !important;
+  right: 0;
+  bottom: 0;
+  background-color: #2e2e33;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.5s;
 }

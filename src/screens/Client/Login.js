@@ -1,10 +1,11 @@
 import { MDBContainer, MDBInput, MDBCheckbox, MDBBtn } from 'mdb-react-ui-kit';
 import { Image, Alert } from 'react-ui';
 import { useEffect, useState } from 'react';
-import { Menu } from 'semantic-ui-react';
+import { Menu, Form } from 'semantic-ui-react';
 import axios from 'axios';
 import { useNavigate, Link, useLocation } from 'react-router-dom';
 import logo1 from '../../static/delirate_new.png';
+
 
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
@@ -23,6 +24,7 @@ export default function LoginScreen() {
     const [qrcode, setQrcode] = useState('');
     const [sessionToken, setSessionToken] = useState('');
     const [info, setInfo] = useState(undefined);
+    const [isLoading, setIsLoading] = useState(false);
     const location = useLocation();
 
     useEffect(() => {
@@ -82,6 +84,7 @@ export default function LoginScreen() {
 
     const fetchData = async () => {
         try {
+            setIsLoading(true);
             let response = await axios.post(apiUrl + '/account/login', {
                 email: email,
                 password: password,
@@ -90,11 +93,20 @@ export default function LoginScreen() {
             let token = response.data.token || undefined;
             localStorage.setItem('email', email);
             if (response.data.success) {
-                navigate('/confirm_otp', {
-                    state: token,
-                });
+                setTimeout(() => {
+                    setIsLoading(false);
+                    navigate('/confirm_otp', {
+                        state: token,
+                    });
+                }, 1000);
+                
             } else {
-                setMsg({ ...msg, content: response.data.msg + '!', color: '#C94E4E' });
+                setTimeout(() => {
+                    setIsLoading(false);
+                    
+                    setMsg({ ...msg, content: response.data.msg + '!', color: '#C94E4E' });
+                }, 1000);
+                
             }
         } catch (error) {
             setMsg({ ...msg, content: error + '!', color: '#C94E4E' });
@@ -119,7 +131,7 @@ export default function LoginScreen() {
 
     return (
         <>
-            <section className="form w-50 mt-5">
+            <Form className="form w-50 mt-5" {...(isLoading && { loading: true })}>
                 <Menu widths={2}>
                     <Menu.Item
                         className={`${activeItem === 'With Password' ? 'bg-x' : ''}`}
@@ -161,8 +173,8 @@ export default function LoginScreen() {
                                 onChange={handlePasswordChange}
                             />
 
-                            <div className="d-flex justify-content-between mx-3 mb-3">
-                                <MDBCheckbox name="flexCheck" value="" id="flexCheckDefault" label="Remember me" />
+                            <div className="d-flex justify-content-between mb-3">
+                                <MDBCheckbox  name="flexCheck" value="" id="flexCheckDefault" label="Remember me" />
                                 <a style={{ color: '#71B280' }} href="!#">
                                     Forgot password?
                                 </a>
@@ -183,14 +195,14 @@ export default function LoginScreen() {
                                         Register
                                     </Link>
                                 </p>
-                                <p>or sign up with:</p>
+                                
 
                                 <div className="d-flex justify-content-between mx-auto" style={{ width: '40%' }}></div>
                             </div>
                         </MDBContainer>
                     </>
                 )}
-            </section>
+            </Form>
             <div className="py-1"></div>
         </>
     );

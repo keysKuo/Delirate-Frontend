@@ -1,7 +1,6 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { ThemeProvider } from 'react-ui';
 
-
 // Project Delirate
 import HomeScreen from './screens/Client/Home';
 import LoginScreen from './screens/Client/Login';
@@ -25,10 +24,11 @@ import CheckoutScreen from './screens/Client/Checkout';
 import LoaderScreen from './screens/Client/Loader';
 import ExamplesScreen from './screens/Client/Examples';
 
-const router = createBrowserRouter([
+
+const router = createBrowserRouter([  
     {
         path: '/',
-        element: <RootLayout />,
+        element: <RootLayout isLoading={true} loadingTime={2500} />,
         children: [
             { path: '/', element: <HomeScreen /> },
             { path: '/login', element: <LoginScreen /> },

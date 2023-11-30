@@ -4,6 +4,7 @@ import logo from "../../static/airplaneshop2.png";
 import { useOutletContext } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Form } from "semantic-ui-react";	
 import { Image } from "react-ui";
 
 const apiUrl = process.env.REACT_APP_API_URL || "http://192.168.1.7:8080";
@@ -21,6 +22,7 @@ export default function CheckoutScreen() {
 	const [requestedNearPayment, setRequestedNearPayment] = useState(false);
 	const [qrcode, setQrcode] = useState("");
 	const [orderId, setOrderId] = useState("");
+	const [isLoading, setIsLoading] = useState(false);
 
 	const handlePaymentMethodChange = (event) => {
 		setSelectedPaymentMethod(event.target.value);
@@ -32,7 +34,11 @@ export default function CheckoutScreen() {
 				.then(response => {
 					const result = response.data;
 					if(result.success) {
-						window.location.href = '/success'
+						setIsLoading(true);
+						localStorage.removeItem('cartItems');
+						setTimeout(() => {
+							window.location.href = '/success'
+						}, 1000)
 					}
 					console.log(result)
 				})
@@ -53,6 +59,7 @@ export default function CheckoutScreen() {
 
 
 	const handleCheckout = () => {
+		setIsLoading(true);
 		const fetchDataCheckOut = async () => {
 			await axios
 				.post(apiUrl + "/checkout", {
@@ -69,19 +76,30 @@ export default function CheckoutScreen() {
 				.then((response) => {
 					const result = response.data;
 					if (result.success) {
-						// localStorage.removeItem('cartItems');
+						
 						if (selectedPaymentMethod !== "Crypto") {
-							window.location.href = result.url;
-						} else {
-							setRequestedNearPayment(true);
-							setQrcode(result.url);
-							setOrderId(result.order_id)
+							setTimeout(() => {
+								setIsLoading(false);			
+								window.location.href = result.url;
+							}, 1000);
+						} 
+						else {
+							setTimeout(() => {
+								setIsLoading(false);
+								setRequestedNearPayment(true);
+								setQrcode(result.url);
+								setOrderId(result.order_id)
+							}, 1000);	
 						}
 					}
 					console.log(result);
 				})
 				.catch((err) => {
-					console.log(err);
+					setTimeout(() => {
+						setIsLoading(false);
+
+						alert(err);
+					}, 1000);
 				});
 		};
 
@@ -89,7 +107,7 @@ export default function CheckoutScreen() {
 	};
 
 	return (
-		<div className="checkout-page">
+		<Form {...(isLoading && { loading: true })} style={{ boxShadow: 'none'}} className="checkout-page w-100">
 			<div className="checkout-form w-100">
 				<div className="checkout-wrap">
 					<div className="row">
@@ -388,6 +406,6 @@ export default function CheckoutScreen() {
 					</div>
 				</div>
 			</div>
-		</div>
+		</Form>
 	);
 }

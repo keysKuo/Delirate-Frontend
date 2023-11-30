@@ -1,13 +1,24 @@
-import React from 'react'
-import { Dimmer, Loader, Segment } from 'semantic-ui-react'
+import React from "react";
+import "../../assets/loader.css";
 
-const LoaderExampleLoader = () => (
-  <Segment>
-    <Dimmer active>
-      <Loader />
-    </Dimmer>
+const Loader = () => (
+	<>
+    <h4 className="brand-name">
+        <span>D</span>
+        <span>e</span>
+        <span>l</span>
+        <span>i</span>
+        <span>r</span>
+        <span>a</span>
+        <span>t</span>
+        <span>e</span>
+      </h4>
+		<div className="superballs">
+			<div className="superballs__dot"></div>
+			<div className="superballs__dot"></div>
+			<div className="superballs__dot"></div>
+		</div>
+	</>
+);
 
-  </Segment>
-)
-
-export default LoaderExampleLoader
+export default Loader;
