@@ -28,7 +28,7 @@ import ExamplesScreen from './screens/Client/Examples';
 const router = createBrowserRouter([  
     {
         path: '/',
-        element: <RootLayout isLoading={true} loadingTime={2500} />,
+        element: <RootLayout isLoading={true} loadingTime={3200} />,
         children: [
             { path: '/', element: <HomeScreen /> },
             { path: '/login', element: <LoginScreen /> },

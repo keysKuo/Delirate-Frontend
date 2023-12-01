@@ -40,7 +40,7 @@ export default function ItemScreen() {
                 <div className='airplane-guide'>
                     <h1>Get your gift ready!</h1>
                     <p>We have a selection of over 100 toys in stock for all ages.</p>
-                    <button style={{ backgroundColor: 'crimson', border: 'none', padding: '5px 10px'}}>Shop toys</button>
+                    <button style={{ backgroundColor: '#71B280', border: 'none', padding: '5px 10px'}}>Shop toys</button>
                 </div>
             </div>
             <div className="center-box">

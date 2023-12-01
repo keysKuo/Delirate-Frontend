@@ -9,35 +9,35 @@
 
 .brand-name>span:nth-child(1) {
   animation: text-color linear 1.6s infinite;
-  animation-delay: calc(0.2s * 1);
+  animation-delay: calc(0.1s * 1);
 }
 .brand-name>span:nth-child(2) {
   animation: text-color linear 1.6s infinite;
-  animation-delay: calc(0.2s * 2);
+  animation-delay: calc(0.1s * 2);
 }
 .brand-name>span:nth-child(3) {
   animation: text-color linear 1.6s infinite;
-  animation-delay: calc(0.2s * 3);
+  animation-delay: calc(0.1s * 3);
 }
 .brand-name>span:nth-child(4) {
   animation: text-color linear 1.6s infinite;
-  animation-delay: calc(0.2s * 4);
+  animation-delay: calc(0.1s * 4);
 }
 .brand-name>span:nth-child(5) {
   animation: text-color linear 1.6s infinite;
-  animation-delay: calc(0.2s * 5);
+  animation-delay: calc(0.1s * 5);
 }
 .brand-name>span:nth-child(6) {
   animation: text-color linear 1.6s infinite;
-  animation-delay: calc(0.2s * 6);
+  animation-delay: calc(0.1s * 6);
 }
 .brand-name>span:nth-child(7) {
   animation: text-color linear 1.6s infinite;
-  animation-delay: calc(0.2s * 7);
+  animation-delay: calc(0.1s * 7);
 }
 .brand-name>span:nth-child(8) {
   animation: text-color linear 1.6s infinite;
-  animation-delay: calc(0.2s * 8);
+  animation-delay: calc(0.1s * 8);
 }
 
 .superballs {
@@ -210,13 +210,13 @@
 
 @keyframes text-color {
   0% {
-    color: #71B280;
+    opacity: 1;
   }
   50% {
-    color: #ccc;
+    opacity: 0.2;
   }
   100%{
-    color: #71B280;
+    opacity: 1;
   }
 }
   

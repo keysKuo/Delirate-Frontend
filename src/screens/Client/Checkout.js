@@ -6,6 +6,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Form } from "semantic-ui-react";	
 import { Image } from "react-ui";
+import CountdownTimer from "../../components/Client/CountdownTimer";
 
 const apiUrl = process.env.REACT_APP_API_URL || "http://192.168.1.7:8080";
 
@@ -34,11 +35,8 @@ export default function CheckoutScreen() {
 				.then(response => {
 					const result = response.data;
 					if(result.success) {
-						setIsLoading(true);
 						localStorage.removeItem('cartItems');
-						setTimeout(() => {
-							window.location.href = '/success'
-						}, 1000)
+						window.location.href = '/success'
 					}
 					console.log(result)
 				})
@@ -84,12 +82,14 @@ export default function CheckoutScreen() {
 							}, 1000);
 						} 
 						else {
+							setIsLoading(false);
+							setRequestedNearPayment(true);
+							setQrcode(result.url);
+							setOrderId(result.order_id)
+
 							setTimeout(() => {
-								setIsLoading(false);
-								setRequestedNearPayment(true);
-								setQrcode(result.url);
-								setOrderId(result.order_id)
-							}, 1000);	
+								window.location.href = '/checkout';
+							}, 60000 * 15);	
 						}
 					}
 					console.log(result);
@@ -123,7 +123,7 @@ export default function CheckoutScreen() {
 								</div>
 							</div>
 
-							<div className="checkout-content">
+							<Form {...requestedNearPayment && { loading: true}} className="checkout-content w-100" style={{ boxShadow: 'none'}}>
 								<div className="row customer-info-container">
 									<div className="col-md-6 col-sm-12">
 										<section>
@@ -246,7 +246,7 @@ export default function CheckoutScreen() {
 														<MDBRadio
 															name="flexRadioDefault"
 															id="flexRadioDefault2"
-															label="Internet Banking"
+															label="Visa - Credit/Debit Card"
 															value="Banking"
 															onChange={
 																handlePaymentMethodChange
@@ -276,12 +276,30 @@ export default function CheckoutScreen() {
 															size="lg"
 														/>
 													</div>
+													<div className="content-box__row">
+														<MDBRadio
+															disabled
+															name="flexRadioDefault"
+															id="flexRadioDefault4"
+															label="Paypal"
+															value="Paypal"
+															onChange={
+																handlePaymentMethodChange
+															}
+														/>
+														<MDBIcon
+															className="mr-3"
+															fab
+															icon="cc-paypal"
+															size="lg"
+														/>
+													</div>
 												</div>
 											</div>
 										</section>
 									</div>
 								</div>
-							</div>
+							</Form>
 						</div>
 
 						<div className="checkout-sidebar text-left">
@@ -299,6 +317,7 @@ export default function CheckoutScreen() {
 											style={{ flexDirection: "column" }}
 											className="center-box w-100 h-100"
 										>
+											
 											<Image
 												css={{ width: "300px" }}
 												src={qrcode}
@@ -310,6 +329,8 @@ export default function CheckoutScreen() {
 												Scan from Delirate app for Near
 												Wallet{" "}
 											</p>
+
+											<CountdownTimer initialMinutes={15} initialSeconds={0} />
 										</div>
 									) : (
 										cartItems.map((item, index) => {
@@ -385,7 +406,7 @@ export default function CheckoutScreen() {
 										</div>
 										<div class="w-50 float-left text-right">
 											<span class="total_price">
-												${totalPrice}
+												{requestedNearPayment ? `${totalPrice * 0.9} Near ` : `$${totalPrice}`}
 											</span>
 										</div>
 									</div>

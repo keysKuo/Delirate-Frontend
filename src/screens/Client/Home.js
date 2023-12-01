@@ -10,7 +10,6 @@ import step4 from "../../static/shipping.png";
 import step5 from "../../static/verification.png";
 
 export default function HomeScreen() {
-
 	return (
 		<>
 			<Container className="home-banner">
@@ -111,10 +110,20 @@ export default function HomeScreen() {
 						<Grid.Column>
 							{/* <Image src="https://m.media-amazon.com/images/G/01/brandregistry/abpm_trh1_551122.png" /> */}
 							<div className="center-box w-100">
-								<div className="ratio ratio-16x9 mt-5">
+								<div className="ratio ratio-16x9 mt-2">
 									<iframe
-										src="https://www.youtube.com/embed/6Yay-46YkVM?mute=0&showsearch=0&showinfo=0&controls=0&rel=0&modestbranding=1"
-										allow="autoplay"
+										src="https://player.vimeo.com/video/890052981?badge=0&amp;quality_selector=0&amp;player_id=0&amp;app_id=58479&amp;title=0&amp;portrait=0&amp;byline=0"
+										frameborder="0"
+										allow="autoplay; fullscreen; picture-in-picture"
+										width="640"
+										height="360"
+										style={{
+											height: "auto",
+											width: "100%",
+											aspectRatio: "640 / 360",
+										}}
+										allowfullscreen
+										controls="false"
 									></iframe>
 								</div>
 							</div>

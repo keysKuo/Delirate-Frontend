@@ -34,20 +34,25 @@ export default function ExamplesScreen() {
 
 				<div className="ratio ratio-16x9 w-50 mx-3">
 					<iframe
-						src="https://www.youtube.com/embed/6Yay-46YkVM?mute=0&showsearch=0&showinfo=0&controls=0&rel=0&modestbranding=1"
-						allow="autoplay"
+						src="https://player.vimeo.com/video/890052981?badge=0&amp;quality_selector=0&amp;player_id=0&amp;app_id=58479&amp;title=0&amp;portrait=0&amp;byline=0"
+						frameborder="0"
+						allow="autoplay; fullscreen; picture-in-picture"
+						width="640"
+						height="360"
+						style={{
+							height: "auto",
+							width: "100%",
+							aspectRatio: "640 / 360",
+						}}
+						allowfullscreen
+						controls="false"
 					></iframe>
 				</div>
 			</div>
 
 			<div className="d-flex flex-column container">
 				<div className="d-flex w-100 flex-row justify-content-between">
-					<MDBCarousel
-						style={{ width: "155%" }}
-						dark
-						fade
-						autoPlay
-					>
+					<MDBCarousel style={{ width: "155%" }} dark fade autoPlay>
 						<MDBCarouselItem
 							className="w-100 d-block"
 							itemId={1}
@@ -85,8 +90,8 @@ export default function ExamplesScreen() {
 						<span className="text-uppercase intro-slider-title">
 							FEATURED PROJECTS
 						</span>
-						<h5 className="intro-slider-name">Design Templates</h5>
-						<p className="my-4">
+						<h1 style={{ marginLeft: '-5px'}} className="intro-heading">Design Templates</h1>
+						<p className="">
 							SUD build a creative team, Underated, needed to
 							scale to keep up with the company's rapid growth.
 							They required a solution that could quickly act as
@@ -102,8 +107,8 @@ export default function ExamplesScreen() {
 			>
 				<div className="example-item">
 					<Link to="https://sud-gamestore.my.canva.site/sud-games">
-                        <img src={slide1} />
-                    </Link>
+						<img src={slide1} />
+					</Link>
 					<div className="example-body">
 						<p className="example-name text-green">
 							Games Store Template
@@ -113,7 +118,10 @@ export default function ExamplesScreen() {
 				</div>
 
 				<div className="example-item">
-					<Link target="blank" to="https://sud-gamestore.my.canva.site/sud-books-store">
+					<Link
+						target="blank"
+						to="https://sud-gamestore.my.canva.site/sud-books-store"
+					>
 						<img src={slide2} />
 					</Link>
 					<div className="example-body">
@@ -125,7 +133,10 @@ export default function ExamplesScreen() {
 				</div>
 
 				<div className="example-item">
-					<Link target="blank" to="https://sud-gamestore.my.canva.site/sud-art-supplies">
+					<Link
+						target="blank"
+						to="https://sud-gamestore.my.canva.site/sud-art-supplies"
+					>
 						<img src={slide3} />
 					</Link>
 					<div className="example-body">
@@ -139,7 +150,10 @@ export default function ExamplesScreen() {
 
 			<div className="d-flex flex-row container justify-content-between">
 				<div className="example-item">
-					<Link target="blank" to="https://sud-gamestore.my.canva.site/sud-cakes">
+					<Link
+						target="blank"
+						to="https://sud-gamestore.my.canva.site/sud-cakes"
+					>
 						<img src={slide5} />
 					</Link>
 					<div className="example-body">
@@ -151,7 +165,10 @@ export default function ExamplesScreen() {
 				</div>
 
 				<div className="example-item">
-					<Link target="blank" to="https://sud-gamestore.my.canva.site/sud-furniture">
+					<Link
+						target="blank"
+						to="https://sud-gamestore.my.canva.site/sud-furniture"
+					>
 						<img src={slide4} />
 					</Link>
 					<div className="example-body">

@@ -143,7 +143,7 @@ function ItemCard({ items }) {
 												AddToCart(item);
 											}}
 										>
-											<i className="fas fa-cart-shopping fa-lg"></i>{" "}
+											{/* <i className="fas fa-cart-shopping fa-lg"></i>{" "} */}
 											Add to cart
 										</button>
 									</div>
