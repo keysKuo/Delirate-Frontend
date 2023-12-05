@@ -1,81 +1,94 @@
 .pricing {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 5rem;
-  }
-  
-  .pricing-plan {
-    text-align: center;
-    width: 30%;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-bottom: 50px;
-    transition: 0.25s;
-  }
+	display: flex;
+	justify-content: space-around;
+	margin-top: 5rem;
+}
 
-  .pricing-plan:hover {
-    cursor: pointer;
-    transform: translate(0px, -5px);
-    box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
-  }
+.pricing-plan {
+	background-color: #252726;
+	padding: 1.5rem;
+	display: flex;
+	flex-direction: column;
+	
+	position: relative;
+	min-height: 38.1875rem rem;
+	box-sizing: border-box;
+  text-align: left;
+  min-height: 450px;
+}
 
-  .pricing-header {
-    width: 100%;
-    border-radius: 10px 10px 0 0;
-    /* background: url(https://images.ctfassets.net/pkn4mh4dn52b/5IyQfCfACvzcWtcOO6mZPi/ce2592ec3951afa22105671d702f4b00/gold-plan-bg.jpg?fm=webp&w=828&q=75); */
-    
-    padding: 20px 10px;
-  }
-  
-  .price {
-    font-size: 24px;
-    margin: 10px 0;
-  }
-  
-  .pricing ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .pricing li {
-    margin: 5px 0;
-  }
-  
-  .pricing-header button {
-    background-color: black;
-    color: #fff;
-    border: none;
-    padding: 25px 60px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin: 20px 0;
-  }
+.pricing-plan:hover {
+	cursor: default;
+}
 
-  .pricing-header p {
-    display: block;
-    padding-top: 10px;
-    font-size: 1.2rem
-  }
+.pricing-header {
+	width: 100%;
+	border-radius: 10px 10px 0 0;
+	/* background: url(https://images.ctfassets.net/pkn4mh4dn52b/5IyQfCfACvzcWtcOO6mZPi/ce2592ec3951afa22105671d702f4b00/gold-plan-bg.jpg?fm=webp&w=828&q=75); */
 
-  .pricing-header h2 {
-    margin: 5px;
-    font-size: 2.2rem;
-    font-weight: 600;
-  }
+	padding: 20px 10px;
+}
 
-  .pricing-body {
-    text-align: center;
-    padding: 2.5rem;
-  }
+.price {
+	font-size: 24px;
+	margin: 10px 0;
+}
 
-  .pricing-body ul {
-    font-size: 1rem;
-    line-height: 1.5rem;
-  }
+.pricing ul {
+	list-style: none;
+	padding: 0;
+}
 
-  .pricing-body ul li {
-    margin-bottom: 1rem
-  }
+.pricing li {
+	margin: 5px 0;
+}
+
+.pricing-header button {
+	background-color: black;
+	color: #fff;
+	border: none;
+	padding: 25px 60px;
+	border-radius: 5px;
+	cursor: pointer;
+	margin: 20px 0;
+}
+
+.pricing-header p {
+	display: block;
+	padding-top: 10px;
+	font-size: 1.2rem;
+}
+
+.pricing-header h2 {
+	margin: 5px;
+	font-size: 2.2rem;
+	font-weight: 600;
+}
+
+.pricing-body {
+	text-align: center;
+	padding: 2.5rem;
+}
+
+.pricing-body ul {
+	font-size: 1rem;
+	line-height: 1.5rem;
+}
+
+.pricing-body ul li {
+	margin-bottom: 1rem;
+}
 
 
+.pricing-title {
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.5rem;
+}
+
+.pricing-amount {
+  font-size: 2.1rem;
+  color: #71B280;
+  font-weight: 600;
+  line-height: 3rem;
+}

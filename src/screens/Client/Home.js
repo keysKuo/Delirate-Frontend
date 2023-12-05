@@ -23,7 +23,7 @@ export default function HomeScreen() {
 			<Container
 				style={{
 					width: "100%",
-					height: "400px",
+					height: "380px",
 				}}
 				className="bg-dark text-light"
 			>
@@ -35,58 +35,54 @@ export default function HomeScreen() {
 								style={{ width: "10vw", borderRadius: "50%" }}
 								src={step1}
 							/>
-							<Container
-								style={{ width: "80%", marginTop: "10px" }}
-							>
+							<div className="w-100 mt-4">
 								Choose which products you want to enroll.
-							</Container>
+							</div>
 						</Grid.Column>
 						<Grid.Column mobile={12} tablet={6} computer={3}>
 							<Image
 								style={{ width: "10vw", borderRadius: "50%" }}
 								src={step2}
 							/>
-							<Container
-								style={{ width: "80%", marginTop: "10px" }}
-							>
+							<div className="w-100 mt-4">
 								Apply Delirate codes to your selected products.
-							</Container>
+							</div>
 						</Grid.Column>
 						<Grid.Column mobile={12} tablet={6} computer={3}>
 							<Image
 								style={{ width: "10vw", borderRadius: "50%" }}
 								src={step3}
 							/>
-							<Container
-								style={{ width: "80%", marginTop: "10px" }}
-							>
+							<div className="w-100 mt-4">
 								Products will be returned from retailer to
 								warehouse.
-							</Container>
+							</div>
 						</Grid.Column>
 						<Grid.Column mobile={12} tablet={6} computer={3}>
 							<Image
 								style={{ width: "10vw", borderRadius: "50%" }}
 								src={step4}
 							/>
-							<Container
+							<div
+								className="w-100 mt-4"
 								style={{ width: "85%", marginTop: "10px" }}
 							>
 								Delirate codes are scanned to ensure only
 								authentic units are shipped.
-							</Container>
+							</div>
 						</Grid.Column>
 						<Grid.Column mobile={12} tablet={6} computer={3}>
 							<Image
 								style={{ width: "10vw", borderRadius: "50%" }}
 								src={step5}
 							/>
-							<Container
+							<div
+								className="w-100 mt-4"
 								style={{ width: "85%", marginTop: "10px" }}
 							>
 								Customers scan to confirm authenticity,
 								regardless of where they purchase.
-							</Container>
+							</div>
 						</Grid.Column>
 					</Grid>
 				</div>

@@ -135,6 +135,11 @@
     line-height: 1.4;
 }
 
+.text-size-huge {
+    font-size: 3rem;
+    line-height: 1.4;
+}
+
 .text-size-medium {
     font-size: 1.25rem;
     font-weight: 200;
@@ -406,12 +411,13 @@
 }
 
 .hero-text {
+    cursor: default;
     text-transform: uppercase;
     text-align: left;
     white-space: nowrap;
     margin-top: 0;
     margin-bottom: 0;
-    font-size: 4.5rem;
+    font-size: 3.3rem;
     font-weight: 500;
     line-height: 1;
 }
