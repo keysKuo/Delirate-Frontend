@@ -65,8 +65,8 @@ export default function LoginScreen() {
             if (qrcode && sessionToken) {
                 fetchDataCheckQR();
             }
-        }, 2000);
-    }, [location, qrcode, sessionToken]);
+        }, 5000);
+    }, [sessionToken]);
 
     const handleEmailChange = (event) => {
         setEmail(event.target.value);

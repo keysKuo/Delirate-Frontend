@@ -26,7 +26,7 @@ export default function PricingScreen() {
 				</p>
 				<button className="btn btn-success bg-x">Get Started</button>
 			</Container>
-			<Container style={{ width: "90%", marginTop: "60px" }}>
+			<Container style={{ width: "85%", marginTop: "60px" }}>
 				<PricingTable />
 			</Container>
 
