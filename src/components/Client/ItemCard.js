@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useOutletContext } from 'react-router-dom';
+import { useOutletContext } from "react-router-dom";
 
 import {
 	MDBContainer,
@@ -15,16 +15,18 @@ import {
 } from "mdb-react-ui-kit";
 
 import nearToken from "../../static/near.png";
+import Reveals from "./Reveals";
 
 const apiUrl = process.env.REACT_APP_API_URL || "http://192.168.1.7:8080";
 
 function ItemCard({ items }) {
-    const { setIsShowCart, cartItems, addToCart, updateQuantity } = useOutletContext();
- 
-    useEffect(() => {
-        localStorage.setItem('cartItems', JSON.stringify(cartItems));
-        // console.log(cartItems);
-    }, [cartItems]);
+	const { setIsShowCart, cartItems, addToCart, updateQuantity } =
+		useOutletContext();
+
+	useEffect(() => {
+		localStorage.setItem("cartItems", JSON.stringify(cartItems));
+		// console.log(cartItems);
+	}, [cartItems]);
 
 	const AddToCart = (item) => {
 		let newItem = {
@@ -37,17 +39,16 @@ function ItemCard({ items }) {
 		};
 
 		// console.log(newItem);
-        const foundIndex = cartItems.findIndex((element => {
-            return element.sku === newItem.sku
-        }));
-        
-        if(foundIndex !== -1) {
-            // updateQuantity(foundIndex, '+');
-        }
-        else {
-            addToCart(newItem);
-        }
-        setIsShowCart(true);
+		const foundIndex = cartItems.findIndex((element) => {
+			return element.sku === newItem.sku;
+		});
+
+		if (foundIndex !== -1) {
+			// updateQuantity(foundIndex, '+');
+		} else {
+			addToCart(newItem);
+		}
+		setIsShowCart(true);
 	};
 
 	return (
@@ -59,24 +60,15 @@ function ItemCard({ items }) {
 							<MDBCard className="text-black align-items-center hover-zoom">
 								<MDBPopover
 									tag="span"
-									btnClassName="d-inline-block"
+									btnClassName="d-inline-block mb-0"
 									btnChildren={
-										<MDBCardImage
-											src={
-												apiUrl + "/uploads" + item.image
-											}
-											position="top"
-											alt={item.sku}
-											style={{
-												width: "75%",
-												cursor: "pointer",
-											}}
-										/>
+										<Reveals visible={apiUrl + "/uploads" + item.image} hidden={item.qrcode} />
 									}
+									
 									placement="right"
 									dismiss
 								>
-									<MDBPopoverBody
+									<MDBPopoverBody	
 										dangerouslySetInnerHTML={{
 											__html: item.desc,
 										}}

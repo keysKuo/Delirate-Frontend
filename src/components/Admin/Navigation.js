@@ -1,125 +1,171 @@
-import '../../assets/mdb/css/bootstrap.min.css';
-import '../../assets/mdb/css/mdb.min.css';
-import { Link } from 'react-router-dom';
-import { Image, Input } from 'react-ui';
-import logo2 from '../../static/delirate_new2.png'
-import { useState } from 'react';
+import "../../assets/mdb/css/bootstrap.min.css";
+import "../../assets/mdb/css/mdb.min.css";
+import { Link } from "react-router-dom";
+import { Image, Input } from "react-ui";
+import logo2 from "../../static/delirate_new.png";
+import { useState } from "react";
 
 const navLinks = [
-    {
-        title: 'Dashboard',
-        link: '#',
-        children: [],
-    },
-    {
-        title: 'Items',
-        link: '#',
-        children: [
-            {
-                title: 'All Items',
-                link: '#',
-            },
-            {
-                title: 'New Item',
-                link: '#',
-            },
-        ],
-    },
-    {
-        title: 'Orders',
-        link: '#',
-        children: [
-            {
-                title: 'All Orders',
-                link: '#',
-            },
-        ],
-    },
+	{
+		title: "Dashboard",
+		link: "#",
+		children: [],
+	},
+	{
+		title: "Items",
+		link: "#",
+		children: [
+			{
+				title: "All Items",
+				link: "#",
+			},
+			{
+				title: "New Item",
+				link: "#",
+			},
+		],
+	},
+	{
+		title: "Orders",
+		link: "#",
+		children: [
+			{
+				title: "All Orders",
+				link: "#",
+			},
+		],
+	},
 ];
 
 export default function Navigation() {
-    const [ activeLinkIndex, setActiveLinkIndex] = useState(null);
-    const [ navPosition, setNavPosition ] = useState('0')
-    const handleLinkClick = (index) => {
-        if(index === activeLinkIndex) {;
-            setActiveLinkIndex(null);
-        }
-        else {
-            setActiveLinkIndex(index);
-        }
-      // Set the active link index when a link is clicked
-    };
+	const [activeLinkIndex, setActiveLinkIndex] = useState(null);
+	const [navPosition, setNavPosition] = useState("0");
+	const handleLinkClick = (index) => {
+		if (index === activeLinkIndex) {
+			setActiveLinkIndex(null);
+		} else {
+			setActiveLinkIndex(index);
+		}
+		// Set the active link index when a link is clicked
+	};
 
-    const toogleSideNav = () => {
-        setNavPosition((prev) => {
-            if(prev === '-100%') {
-                return '0'
-            }else {
-                return '-100%'
-            }
-        })
-    }
+	const toogleSideNav = () => {
+		setNavPosition((prev) => {
+			if (prev === "-100%") {
+				return "0";
+			} else {
+				return "-100%";
+			}
+		});
+	};
 
-    return (
-        <div className="fixed-sn white-skin">
-            <header>
-                <div style={{transition: '0.5s ease', transform: `translateX(${navPosition})`}} id="slide-out" className="side-nav sn-bg-4 fixed">
-                    <ul className="custom-scrollbar">
-                        <li className="logo-sn waves-effect py-3">
-                            <div className="text-center center-box">
-                                <Link href="#" className="pl-0"><Image style={{ width: '36%'}} src={logo2} /></Link>
-                            </div>
-                        </li>
-                        <li>
-                            <form className="search-form" role="search">
-                                <div className="md-form mt-0 waves-light">
-                                    <Input type="text" className="form-control py-2" placeholder="Search" />
-                                </div>
-                            </form>
-                        </li>
+	return (
+		<div className="fixed-sn white-skin">
+			<header>
+				<div
+					style={{
+						transition: "0.5s ease",
+						transform: `translateX(${navPosition})`,
+					}}
+					id="slide-out"
+					className="side-nav sn-bg-4 fixed"
+				>
+					<ul className="custom-scrollbar">
+						<li className="logo-sn waves-effect py-3">
+							<div className="text-center center-box">
+								<Link href="#" className="pl-0">
+									<Image
+										style={{ width: "70%" }}
+										src={logo2}
+									/>
+								</Link>
+							</div>
+						</li>
+						<li>
+							<form className="search-form" role="search">
+								<div className="md-form mt-0 waves-light">
+									<Input
+										type="text"
+										className="form-control py-2"
+										placeholder="Search"
+									/>
+								</div>
+							</form>
+						</li>
 
-                        <li>
-                            <ul className="collapsible collapsible-accordion">
-                        {navLinks.map((nav, index) => {
-                            return (
-                                <>
-                                    <li className={`${index === activeLinkIndex ? 'active' : ''}`} key={index}>
-                                        <Link
-                                            to={nav.link}
-                                            onClick={() => handleLinkClick(index)}
-                                            className={`collapsible-header waves-effect arrow-r ${
-                                                index === activeLinkIndex ? 'active' : ''
-                                            }`}
-                                        >
-                                            <i className="w-fa fas fa-tachometer-alt"></i>
-                                            {nav.title}
-                                            <i className="fas fa-angle-down rotate-icon"></i>
-                                        </Link>
-                                        <div className={`collapsible-body ${
-                                                index === activeLinkIndex ? 'd-block' : '' }`}>
-                                            <ul>
-                                                {nav.children.map((n, childIndex) => {
-                                                    return (
-                                                        <>
-                                                            <li key={childIndex}>
-                                                                <Link to={n.link} className="waves-effect">
-                                                                    {n.title}
-                                                                </Link>
-                                                            </li>
-                                                        </>
-                                                    );
-                                                })}
-                                            </ul>
-                                        </div>
-                                    </li>
-                                </>
-                            );
-                        })}
-                            </ul>
-                        </li>
-                        
+						<li>
+							<ul className="collapsible collapsible-accordion">
+								{navLinks.map((nav, index) => {
+									return (
+										<>
+											<li
+												className={`${
+													index === activeLinkIndex
+														? "active"
+														: ""
+												}`}
+												key={index}
+											>
+												<Link
+													to={nav.link}
+													onClick={() =>
+														handleLinkClick(index)
+													}
+                                                    style={{ display: 'flex', flexDirection: 'row'}}
+													className={`collapsible-header waves-effect arrow-r ${
+														index ===
+														activeLinkIndex
+															? "active"
+															: ""
+													}`}
+												>
+													
+													{nav.title}
+													<i className="fas fa-angle-down rotate-icon"></i>
+												</Link>
+												<div
+													className={`collapsible-body ${
+														index ===
+														activeLinkIndex
+															? "d-block"
+															: ""
+													}`}
+												>
+													<ul>
+														{nav.children.map(
+															(n, childIndex) => {
+																return (
+																	<>
+																		<li
+																			key={
+																				childIndex
+																			}
+																		>
+																			<Link
+																				to={
+																					n.link
+																				}
+																				className="waves-effect px-5 text-left"
+																			>
+																				{
+																					n.title
+																				}
+																			</Link>
+																		</li>
+																	</>
+																);
+															}
+														)}
+													</ul>
+												</div>
+											</li>
+										</>
+									);
+								})}
+							</ul>
+						</li>
 
-                        {/* <li>
+						{/* <li>
                             <ul className="collapsible collapsible-accordion">
                                 <li className={`${isOpen ? 'active' : ''}`}>
                                     <Link onClick={() => setIsOpen(!isOpen)} className={`collapsible-header waves-effect arrow-r ${isOpen ? 'active' : ''}`}>
@@ -507,93 +553,131 @@ export default function Navigation() {
                                 </li>
                             </ul>
                         </li> */}
-                    </ul>
-                    <div className="sidenav-bg mask-strong"></div>
-                </div>
+					</ul>
+					<div className="sidenav-bg mask-strong"></div>
+				</div>
 
-                <nav className="navbar fixed-top navbar-expand-lg scrolling-navbar double-nav">
-                    <div className="float-left">
-                        <Link onClick={toogleSideNav} href="#" data-activates="slide-out" className="ml-3">
-                            <i className="fas fa-bars"></i>
-                        </Link>
-                    </div>
+				<nav className="navbar fixed-top navbar-expand-lg scrolling-navbar double-nav">
+					<div className="float-left">
+						<Link
+							onClick={toogleSideNav}
+							href="#"
+							data-activates="slide-out"
+							className="ml-3"
+						>
+							{/* <i className="fas fa-bars"></i> */}
+						</Link>
+					</div>
 
-                    <div className="breadcrumb-dn mr-auto">
-                        <p>Invoice</p>
-                    </div>
-
-                    <ul className="nav navbar-nav nav-flex-icons ml-auto">
-                        <li className="nav-item dropdown notifications-nav">
-                            <Link
-                                className="nav-link dropdown-toggle waves-effect"
-                                id="navbarDropdownMenuLink"
-                                data-toggle="dropdown"
-                                aria-haspopup="true"
-                                aria-expanded="false"
-                            >
-                                <span className="badge red">3</span> <i className="fas fa-bell"></i>
-                                <span className="d-none d-md-inline-block">Notifications</span>
-                            </Link>
-                            <div className="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                                <Link className="dropdown-item" href="#">
-                                    <i className="far fa-money-bill-alt mr-2" aria-hidden="true"></i>
-                                    <span>New order received</span>
-                                    <span className="float-right">
-                                        <i className="far fa-clock" aria-hidden="true"></i> 13 min
-                                    </span>
-                                </Link>
-                                <Link className="dropdown-item" href="#">
-                                    <i className="far fa-money-bill-alt mr-2" aria-hidden="true"></i>
-                                    <span>New order received</span>
-                                    <span className="float-right">
-                                        <i className="far fa-clock" aria-hidden="true"></i> 33 min
-                                    </span>
-                                </Link>
-                                <Link className="dropdown-item" href="#">
-                                    <i className="fas fa-chart-line mr-2" aria-hidden="true"></i>
-                                    <span>Your campaign is about to end</span>
-                                    <span className="float-right">
-                                        <i className="far fa-clock" aria-hidden="true"></i> 53 min
-                                    </span>
-                                </Link>
-                            </div>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link waves-effect">
-                                <i className="fas fa-envelope"></i>{' '}
-                                <span className="clearfix d-none d-sm-inline-block">Contact</span>
-                            </Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link waves-effect">
-                                <i className="far fa-comments"></i>{' '}
-                                <span className="clearfix d-none d-sm-inline-block">Support</span>
-                            </Link>
-                        </li>
-                        <li className="nav-item dropdown">
-                            <Link
-                                className="nav-link dropdown-toggle waves-effect"
-                                href="#"
-                                id="userDropdown"
-                                data-toggle="dropdown"
-                                aria-haspopup="true"
-                                aria-expanded="false"
-                            >
-                                <i className="fas fa-user"></i>{' '}
-                                <span className="clearfix d-none d-sm-inline-block">Profile</span>
-                            </Link>
-                            <div className="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                                <Link className="dropdown-item" href="#">
-                                    Log Out
-                                </Link>
-                                <Link className="dropdown-item" href="#">
-                                    My account
-                                </Link>
-                            </div>
-                        </li>
-                    </ul>
-                </nav>
-            </header>
-        </div>
-    );
+					
+					<ul className="nav navbar-nav nav-flex-icons ml-auto">
+						<li className="nav-item dropdown notifications-nav">
+							<Link
+								className="nav-link dropdown-toggle waves-effect"
+								id="navbarDropdownMenuLink"
+								data-toggle="dropdown"
+								aria-haspopup="true"
+								aria-expanded="false"
+							>
+								<span className="badge red">3</span>{" "}
+								<i className="fas fa-bell"></i>
+								<span className="d-none d-md-inline-block">
+									Notifications
+								</span>
+							</Link>
+							<div
+								className="dropdown-menu dropdown-primary"
+								aria-labelledby="navbarDropdownMenuLink"
+							>
+								<Link className="dropdown-item" href="#">
+									<i
+										className="far fa-money-bill-alt mr-2"
+										aria-hidden="true"
+									></i>
+									<span>New order received</span>
+									<span className="float-right">
+										<i
+											className="far fa-clock"
+											aria-hidden="true"
+										></i>{" "}
+										13 min
+									</span>
+								</Link>
+								<Link className="dropdown-item" href="#">
+									<i
+										className="far fa-money-bill-alt mr-2"
+										aria-hidden="true"
+									></i>
+									<span>New order received</span>
+									<span className="float-right">
+										<i
+											className="far fa-clock"
+											aria-hidden="true"
+										></i>{" "}
+										33 min
+									</span>
+								</Link>
+								<Link className="dropdown-item" href="#">
+									<i
+										className="fas fa-chart-line mr-2"
+										aria-hidden="true"
+									></i>
+									<span>Your campaign is about to end</span>
+									<span className="float-right">
+										<i
+											className="far fa-clock"
+											aria-hidden="true"
+										></i>{" "}
+										53 min
+									</span>
+								</Link>
+							</div>
+						</li>
+						<li className="nav-item">
+							<Link className="nav-link waves-effect">
+								<i className="fas fa-envelope"></i>{" "}
+								<span className="clearfix d-none d-sm-inline-block">
+									Contact
+								</span>
+							</Link>
+						</li>
+						<li className="nav-item">
+							<Link className="nav-link waves-effect">
+								<i className="far fa-comments"></i>{" "}
+								<span className="clearfix d-none d-sm-inline-block">
+									Support
+								</span>
+							</Link>
+						</li>
+						<li className="nav-item dropdown">
+							<Link
+								className="nav-link dropdown-toggle waves-effect"
+								href="#"
+								id="userDropdown"
+								data-toggle="dropdown"
+								aria-haspopup="true"
+								aria-expanded="false"
+							>
+								<i className="fas fa-user"></i>{" "}
+								<span className="clearfix d-none d-sm-inline-block">
+									Profile
+								</span>
+							</Link>
+							<div
+								className="dropdown-menu dropdown-menu-right"
+								aria-labelledby="userDropdown"
+							>
+								<Link className="dropdown-item" href="#">
+									Log Out
+								</Link>
+								<Link className="dropdown-item" href="#">
+									My account
+								</Link>
+							</div>
+						</li>
+					</ul>
+				</nav>
+			</header>
+		</div>
+	);
 }

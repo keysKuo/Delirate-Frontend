@@ -1,29 +1,29 @@
 import React from 'react';
 import { Image, Reveal } from 'semantic-ui-react';
-import OverlayImage from './OverlayImage';
+import logo from '../../static/near.png'
 
 const Reveals = ({ name, price, visible, hidden }) => (
-    <Reveal style={{ borderRadius: '10px' }} animated="move up">
-        <Reveal.Content visible>
+    <Reveal className='d-flex align-items-center justify-content-cenber' style={{ borderRadius: '10px' }} animated="move right">
+        <Reveal.Content visible className='w-100'>
             {/* <Label attached='top right'>Code</Label> */}
-            <OverlayImage
-                name={name}
-                price={price}
-                style={{ width: '18em', height: '18em' }}
-                src={visible}
-                size="medium"
+            <Image
+            className='mx-auto'
+                style={{ width: '14em', height: '14em', }}
+                src={visible ? visible : logo}
+                size="tiny"
             />
         </Reveal.Content>
 
-        <Reveal.Content hidden>
+        <Reveal.Content hidden >
             <Image
-                style={{ width: '18em', boxShadow: 'rgba(149, 157, 165, 0.2) 0px 8px 24px' }}
+                className='mx-auto'
+                style={{ width: '14em',  borderRadius: '1.5rem' }}
                 src={
                     hidden
                         ? hidden
                         : 'https://img.freepik.com/premium-vector/qr-de-isolated-white-qrcode-vector-icon_656810-475.jpg'
                 }
-                size="medium"
+                size="tiny"
             />
         </Reveal.Content>
     </Reveal>
