@@ -29,7 +29,7 @@ export default function HomeScreen() {
 			>
 				<div style={{ height: "100%" }} className="center-box">
 					{/* <Image style={{ width: '30%' }} src={logo} /> */}
-					<Grid>
+					<Grid className="center-box">
 						<Grid.Column mobile={12} tablet={6} computer={3}>
 							<Image
 								style={{ width: "10vw", borderRadius: "50%" }}
