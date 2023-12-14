@@ -7,7 +7,7 @@ export default function AdminLayout() {
     return (
         <>
             <Navigation />
-            <main className={classes.content}>
+            <main className={classes.adminContent}>
                 <Outlet />
             </main>
             

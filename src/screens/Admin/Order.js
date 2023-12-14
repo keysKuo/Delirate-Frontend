@@ -8,13 +8,16 @@ const apiUrl = process.env.REACT_APP_API_URL;
 
 export default function OrderScreen() {
 	const [orders, setOrders] = useState([]);
+	const userJSON = localStorage.getItem('user');
+	const user = JSON.parse(userJSON);
+
 
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
 				if (orders.length == 0) {
 					const response = await axios.get(
-						"http://localhost:8080/order/get_orders_by_store/6558be56f9a4f960f57af04b"
+						`${apiUrl}/order/get_orders_by_store/${user.store._id}`
 					);
 					// console.log(response.data); // Assuming your data is in response.data
 					const data = response.data;

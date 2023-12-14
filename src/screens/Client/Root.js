@@ -137,7 +137,7 @@ export default function RootLayout({ isLoading, loadingTime }) {
 							<div className="w-50 float-left">Total:</div>
 							<div className="w-50 float-left text-right">
 								<span className="total_price">
-									${totalPrice}
+									${(totalPrice).toFixed(2)}
 								</span>
 							</div>
 						</div>

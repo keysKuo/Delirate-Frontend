@@ -11,19 +11,36 @@ import CountdownTimer from "../../components/Client/CountdownTimer";
 const apiUrl = process.env.REACT_APP_API_URL || "http://192.168.1.7:8080";
 
 export default function CheckoutScreen() {
+	const userJSON = localStorage.getItem('user');
+	const user = JSON.parse(userJSON);
+
 	const { cartItems, totalPrice } = useOutletContext();
-	const [customer, setCustomer] = useState({
-		name: "",
-		email: "",
-		phone: "",
-		address: "",
-		note: "",
-	});
 	const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("");
 	const [requestedNearPayment, setRequestedNearPayment] = useState(false);
 	const [qrcode, setQrcode] = useState("");
-	const [orderId, setOrderId] = useState("");
+	const [code, setCode] = useState("");
 	const [isLoading, setIsLoading] = useState(false);
+
+	const [customer, setCustomer] = useState(() => {
+		if(user) {
+			return {
+				name: user.name,
+				email: user.email,
+				phone: user.phone,
+				address: user.address,
+				note: "",
+			}
+		}
+
+		return {
+			name: "",
+			email: "",
+			phone: "",
+			address: "",
+			note: "",
+		}
+	});
+
 
 	const handlePaymentMethodChange = (event) => {
 		setSelectedPaymentMethod(event.target.value);
@@ -31,7 +48,7 @@ export default function CheckoutScreen() {
 
 	useEffect(() => {
 		const fetchDataPayment = async () => {
-			await axios.get(`${apiUrl}/order/check-payment/${orderId}`)
+			await axios.get(`${apiUrl}/order/check-payment/${code}`)
 				.then(response => {
 					const result = response.data;
 					if(result.success) {
@@ -53,7 +70,7 @@ export default function CheckoutScreen() {
 				
 		}, 3000)
 
-	}, [orderId, requestedNearPayment])
+	}, [code, requestedNearPayment])
 
 
 	const handleCheckout = () => {
@@ -62,13 +79,12 @@ export default function CheckoutScreen() {
 			await axios
 				.post(apiUrl + "/checkout", {
 					items: cartItems,
-					store_id: "6558be56f9a4f960f57af04b",
 					name: customer.name,
 					email: customer.email,
 					phone: customer.phone,
 					address: customer.address,
 					note: customer.note,
-					total_price: totalPrice,
+					total_price: totalPrice.toFixed(2),
 					payment_type: selectedPaymentMethod,
 				})
 				.then((response) => {
@@ -85,7 +101,7 @@ export default function CheckoutScreen() {
 							setIsLoading(false);
 							setRequestedNearPayment(true);
 							setQrcode(result.url);
-							setOrderId(result.order_id)
+							setCode(result.code)
 
 							setTimeout(() => {
 								window.location.href = '/checkout';
@@ -149,6 +165,7 @@ export default function CheckoutScreen() {
 																		.value,
 																})
 															}
+															value={user ? user.name : ""}
 														/>
 														<MDBInput
 															wrapperClass="mb-4"
@@ -162,6 +179,7 @@ export default function CheckoutScreen() {
 																		.value,
 																})
 															}
+															value={user ? user.email : ""}
 														/>
 														<MDBInput
 															wrapperClass="mb-4"
@@ -175,6 +193,7 @@ export default function CheckoutScreen() {
 																		.value,
 																})
 															}
+															value={user ? user.phone : ""}
 														/>
 														<MDBInput
 															wrapperClass="mb-4"
@@ -188,6 +207,7 @@ export default function CheckoutScreen() {
 																			.value,
 																})
 															}
+															value={user ? user.location : ""}
 														/>
 														<MDBTextArea
 															label="Note"
@@ -406,7 +426,7 @@ export default function CheckoutScreen() {
 										</div>
 										<div class="w-50 float-left text-right">
 											<span class="total_price">
-												{requestedNearPayment ? `${totalPrice * 0.9} Near ` : `$${totalPrice}`}
+												{requestedNearPayment ? `${(totalPrice * 0.9).toFixed(2)} Near ` : `$${totalPrice.toFixed(2)}`}
 											</span>
 										</div>
 									</div>

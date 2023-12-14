@@ -8,12 +8,19 @@ import { useState } from "react";
 const navLinks = [
 	{
 		title: "Dashboard",
-		link: "#",
+		link: "/admin",
+        icon: "fa fa-clipboard",
+        arrow: false,
 		children: [],
+        onClick: () => {
+          
+        }
 	},
 	{
-		title: "Items",
+		title: "Store",
 		link: "#",
+        icon: "fa fa-cubes",
+        arrow: true,
 		children: [
 			{
 				title: "All Items",
@@ -21,26 +28,100 @@ const navLinks = [
 			},
 			{
 				title: "New Item",
-				link: "#",
+				link: "/admin/store/create_item",
 			},
 		],
+        onClick: () => {
+           
+        }
 	},
 	{
 		title: "Orders",
 		link: "#",
+        icon: "fa fa-inbox",
+        arrow: true,
 		children: [
 			{
+				title: "Create Order",
+				link: "/admin/orders/create_order",
+			},
+			{
 				title: "All Orders",
+				link: "/admin/orders/list",
+			},
+		],
+        onClick: () => {
+        
+        }
+	},
+	{
+		title: "Customers",
+		link: "#",
+        icon: "fa fa-address-card",
+        arrow: true,
+		children: [
+			{
+				title: "Add new customer",
+				link: "#",
+			},
+			{
+				title: "All Customer",
 				link: "#",
 			},
 		],
+        onClick: () => {
+          
+        }
+	},
+	{
+		title: "Services",
+		link: "#",
+        icon: "fa fa-star",
+        arrow: true,
+		children: [
+			
+		],
+        onClick: () => {
+          
+        }
+	},
+	{
+		title: "Policies",
+		link: "#",
+        icon: "fa fa-bookmark",
+        arrow: true,
+		children: [
+			{
+				title: "All Customer",
+				link: "#",
+			},
+		],
+        onClick: () => {
+  
+        }
+	},
+	{
+		title: "Log out",
+		link: "#",
+        icon: "fa fa-sign-out",
+        arrow: false,
+		children: [
+			
+		],
+        onClick: async () => {
+            window.location.href = '/';
+            localStorage.clear();
+        }
 	},
 ];
 
 export default function Navigation() {
 	const [activeLinkIndex, setActiveLinkIndex] = useState(null);
 	const [navPosition, setNavPosition] = useState("0");
+    const [pageName, setPageName] = useState('');
 	const handleLinkClick = (index) => {
+        setPageName(navLinks[index].title)
+
 		if (index === activeLinkIndex) {
 			setActiveLinkIndex(null);
 		} else {
@@ -106,12 +187,17 @@ export default function Navigation() {
 												}`}
 												key={index}
 											>
+                                                
 												<Link
 													to={nav.link}
-													onClick={() =>
-														handleLinkClick(index)
-													}
-                                                    style={{ display: 'flex', flexDirection: 'row'}}
+													onClick={() => {
+                                                        handleLinkClick(index);
+                                                        nav.onClick();
+                                                    }}
+													style={{
+														display: "flex",
+														flexDirection: "row",
+													}}
 													className={`collapsible-header waves-effect arrow-r ${
 														index ===
 														activeLinkIndex
@@ -119,9 +205,9 @@ export default function Navigation() {
 															: ""
 													}`}
 												>
-													
+                                                    <span style={{ display: 'inline-block', width: '35px'}}><i  className={nav.icon} aria-hidden="true"></i></span>
 													{nav.title}
-													<i className="fas fa-angle-down rotate-icon"></i>
+													{nav.arrow ? <i className="fas fa-angle-down rotate-icon"></i> : <></>}
 												</Link>
 												<div
 													className={`collapsible-body ${
@@ -164,400 +250,12 @@ export default function Navigation() {
 								})}
 							</ul>
 						</li>
-
-						{/* <li>
-                            <ul className="collapsible collapsible-accordion">
-                                <li className={`${isOpen ? 'active' : ''}`}>
-                                    <Link onClick={() => setIsOpen(!isOpen)} className={`collapsible-header waves-effect arrow-r ${isOpen ? 'active' : ''}`}>
-                                        <i className="w-fa fas fa-tachometer-alt"></i>Dashboards
-                                        <i className="fas fa-angle-down rotate-icon"></i>
-                                    </Link>
-                                    <div className={`collapsible-body ${isOpen ? 'd-block' : ''}`}>
-                                        <ul>
-                                            <li>
-                                                <Link href="../dashboards/v-1.html" className="waves-effect">
-                                                    Version 1
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="../dashboards/v-2.html" className="waves-effect">
-                                                    Version 2
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="../dashboards/v-3.html" className="waves-effect">
-                                                    Version 3
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="../dashboards/v-4.html" className="waves-effect">
-                                                    Version 4
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="../dashboards/v-5.html" className="waves-effect">
-                                                    Version 5
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="../dashboards/v-6.html" className="waves-effect">
-                                                    Version 6
-                                                </Link>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li>
-                                    <Link className="collapsible-header waves-effect arrow-r">
-                                        <i className="w-fa fas fa-image"></i>Pages
-                                        <i className="fas fa-angle-down rotate-icon"></i>
-                                    </Link>
-                                    <div className={`collapsible-body ${isOpen ? 'd-block' : ''}`}>
-                                        <ul>
-                                            <li>
-                                                <Link href="../pages/login.html" className="waves-effect">
-                                                    Login
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="../pages/register.html" className="waves-effect">
-                                                    Register
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="../pages/pricing.html" className="waves-effect">
-                                                    Pricing
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="../pages/about.html" className="waves-effect">
-                                                    About us
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="../pages/single.html" className="waves-effect">
-                                                    Single post
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="../pages/post.html" className="waves-effect">
-                                                    Post listing
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="../pages/landing.html" className="waves-effect">
-                                                    Landing page
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="../pages/customers.html" className="waves-effect">
-                                                    Customers
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="../pages/invoice.html" className="waves-effect">
-                                                    Invoice
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="../pages/page-creator.html" className="waves-effect">
-                                                    Page Creator
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="../pages/support.html" className="waves-effect">
-                                                    Support
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="../pages/chat.html" className="waves-effect">
-                                                    Chat
-                                                </Link>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li>
-                                    <Link className="collapsible-header waves-effect arrow-r">
-                                        <i className="w-fa fas fa-user"></i>Profile
-                                        <i className="fas fa-angle-down rotate-icon"></i>
-                                    </Link>
-                                    <div className="collapsible-body">
-                                        <ul>
-                                            <li>
-                                                <Link href="../profile/basic-1.html" className="waves-effect">
-                                                    Basic 1
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="../profile/basic-2.html" className="waves-effect">
-                                                    Basic 2
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="../profile/extended.html" className="waves-effect">
-                                                    Extended
-                                                </Link>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li>
-                                    <Link className="collapsible-header waves-effect arrow-r">
-                                        <i className="w-fa fab fa-css3"></i>CSS<i className="fas fa-angle-down rotate-icon"></i>
-                                    </Link>
-                                    <div className="collapsible-body">
-                                        <ul>
-                                            <li>
-                                                <Link href="../css/grid.html" className="waves-effect">
-                                                    Grid system
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="../css/media.html" className="waves-effect">
-                                                    Media object
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="../css/utilities.html" className="waves-effect">
-                                                    Utilities / helpers
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="../css/code.html" className="waves-effect">
-                                                    Code
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="../css/icons.html" className="waves-effect">
-                                                    Icons
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="../css/images.html" className="waves-effect">
-                                                    Images
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="../css/typography.html" className="waves-effect">
-                                                    Typography
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="../css/animations.html" className="waves-effect">
-                                                    Animations
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="../css/colors.html" className="waves-effect">
-                                                    Colors
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="../css/hover.html" className="waves-effect">
-                                                    Hover effects
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="../css/masks.html" className="waves-effect">
-                                                    Masks
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="../css/shadows.html" className="waves-effect">
-                                                    Shadows
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="../css/skins.html" className="waves-effect">
-                                                    Skins
-                                                </Link>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li>
-                                    <Link className="collapsible-header waves-effect arrow-r">
-                                        <i className="w-fa fas fa-th"></i>Components
-                                        <i className="fas fa-angle-down rotate-icon"></i>
-                                    </Link>
-                                    <div className="collapsible-body">
-                                        <ul>
-                                            <li>
-                                                <Link href="../components/buttons.html" className="waves-effect">
-                                                    Buttons
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="../components/cards.html" className="waves-effect">
-                                                    Cards
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="../components/collapse.html" className="waves-effect">
-                                                    Collapse
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="../components/date.html" className="waves-effect">
-                                                    Date picker
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="../components/list.html" className="waves-effect">
-                                                    List group
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="../components/panels.html" className="waves-effect">
-                                                    Panels
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="../components/pagination.html" className="waves-effect">
-                                                    Pagination
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="../components/popovers.html" className="waves-effect">
-                                                    Popovers
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="../components/progress.html" className="waves-effect">
-                                                    Progress bars
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="../components/stepper.html" className="waves-effect">
-                                                    Stepper
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="../components/tabs.html" className="waves-effect">
-                                                    Tabs & pills
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="../components/tags.html" className="waves-effect">
-                                                    Tags, labels & badges
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="../components/time.html" className="waves-effect">
-                                                    Time picker
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="../components/tooltips.html" className="waves-effect">
-                                                    Tooltips
-                                                </Link>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li>
-                                    <Link className="collapsible-header waves-effect arrow-r">
-                                        <i className="w-fa far fa-check-square"></i>Forms
-                                        <i className="fas fa-angle-down rotate-icon"></i>
-                                    </Link>
-                                    <div className="collapsible-body">
-                                        <ul>
-                                            <li>
-                                                <Link href="../forms/basic.html" className="waves-effect">
-                                                    Basic
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="../forms/extended.html" className="waves-effect">
-                                                    Extended
-                                                </Link>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li>
-                                    <Link className="collapsible-header waves-effect arrow-r">
-                                        <i className="w-fa fas fa-table"></i>Tables
-                                        <i className="fas fa-angle-down rotate-icon"></i>
-                                    </Link>
-                                    <div className="collapsible-body">
-                                        <ul>
-                                            <li>
-                                                <Link href="../tables/basic.html" className="waves-effect">
-                                                    Basic
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="../tables/extended.html" className="waves-effect">
-                                                    Extended
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="../tables/datatables.html" className="waves-effect">
-                                                    DataTables.net
-                                                </Link>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li>
-                                    <Link className="collapsible-header waves-effect arrow-r">
-                                        <i className="w-fa fas fa-map"></i>Maps<i className="fas fa-angle-down rotate-icon"></i>
-                                    </Link>
-                                    <div className="collapsible-body">
-                                        <ul>
-                                            <li>
-                                                <Link href="../maps/google.html" className="waves-effect">
-                                                    Google Maps
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="../maps/full.html" className="waves-effect">
-                                                    Full screen map
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="../maps/vector.html" className="waves-effect">
-                                                    Vector world map
-                                                </Link>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <Link href="../alerts/alerts.html" className="collapsible-header waves-effect">
-                                        <i className="w-fa far fa-bell"></i>Alerts
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link href="../modals/modals.html" className="collapsible-header waves-effect">
-                                        <i className="w-fa fas fa-bolt"></i>Modals
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link href="../charts/charts.html" className="collapsible-header waves-effect">
-                                        <i className="w-fa fas fa-chart-pie"></i>Charts
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link href="../calendar/calendar.html" className="collapsible-header waves-effect">
-                                        <i className="w-fa far fa-calendar-check"></i>Calendar
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link href="../sections/sections.html" className="collapsible-header waves-effect">
-                                        <i className="w-fa fas fa-th-large"></i>Sections
-                                    </Link>
-                                </li>
-                            </ul>
-                        </li> */}
 					</ul>
 					<div className="sidenav-bg mask-strong"></div>
 				</div>
 
 				<nav className="navbar fixed-top navbar-expand-lg scrolling-navbar double-nav">
+                    <div style={{ position: 'absolute', left: '270px', color: 'black', textTransform: 'uppercase'}}>{pageName}</div>
 					<div className="float-left">
 						<Link
 							onClick={toogleSideNav}
@@ -569,10 +267,9 @@ export default function Navigation() {
 						</Link>
 					</div>
 
-					
 					<ul className="nav navbar-nav nav-flex-icons ml-auto">
 						<li className="nav-item dropdown notifications-nav">
-							<Link
+							<div
 								className="nav-link dropdown-toggle waves-effect"
 								id="navbarDropdownMenuLink"
 								data-toggle="dropdown"
@@ -584,12 +281,12 @@ export default function Navigation() {
 								<span className="d-none d-md-inline-block">
 									Notifications
 								</span>
-							</Link>
+							</div>
 							<div
 								className="dropdown-menu dropdown-primary"
 								aria-labelledby="navbarDropdownMenuLink"
 							>
-								<Link className="dropdown-item" href="#">
+								<div className="dropdown-item" href="#">
 									<i
 										className="far fa-money-bill-alt mr-2"
 										aria-hidden="true"
@@ -602,8 +299,8 @@ export default function Navigation() {
 										></i>{" "}
 										13 min
 									</span>
-								</Link>
-								<Link className="dropdown-item" href="#">
+								</div>
+								<div className="dropdown-item" href="#">
 									<i
 										className="far fa-money-bill-alt mr-2"
 										aria-hidden="true"
@@ -616,8 +313,8 @@ export default function Navigation() {
 										></i>{" "}
 										33 min
 									</span>
-								</Link>
-								<Link className="dropdown-item" href="#">
+								</div>
+								<div className="dropdown-item" href="#">
 									<i
 										className="fas fa-chart-line mr-2"
 										aria-hidden="true"
@@ -630,27 +327,27 @@ export default function Navigation() {
 										></i>{" "}
 										53 min
 									</span>
-								</Link>
+								</div>
 							</div>
 						</li>
 						<li className="nav-item">
-							<Link className="nav-link waves-effect">
+							<div className="nav-link waves-effect">
 								<i className="fas fa-envelope"></i>{" "}
 								<span className="clearfix d-none d-sm-inline-block">
 									Contact
 								</span>
-							</Link>
+							</div>
 						</li>
 						<li className="nav-item">
-							<Link className="nav-link waves-effect">
+							<div className="nav-link waves-effect">
 								<i className="far fa-comments"></i>{" "}
 								<span className="clearfix d-none d-sm-inline-block">
 									Support
 								</span>
-							</Link>
+							</div>
 						</li>
 						<li className="nav-item dropdown">
-							<Link
+							<div
 								className="nav-link dropdown-toggle waves-effect"
 								href="#"
 								id="userDropdown"
@@ -662,17 +359,13 @@ export default function Navigation() {
 								<span className="clearfix d-none d-sm-inline-block">
 									Profile
 								</span>
-							</Link>
+							</div>
 							<div
 								className="dropdown-menu dropdown-menu-right"
 								aria-labelledby="userDropdown"
 							>
-								<Link className="dropdown-item" href="#">
-									Log Out
-								</Link>
-								<Link className="dropdown-item" href="#">
-									My account
-								</Link>
+								<div className="dropdown-item">Log Out</div>
+								<div className="dropdown-item">My account</div>
 							</div>
 						</li>
 					</ul>

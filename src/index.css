@@ -418,6 +418,10 @@ i.fas {
 	color: #134e5e !important;
 }
 
+i.fa-star {
+	color: #f9c762 !important
+}
+
 .example-intro-container {
 	width: 100%;
 	min-height: 500px;
@@ -525,4 +529,9 @@ i.fas {
 }
 
 
+
+.ub-dspl_flex {
+	/* display: block !important; */
+	width: 100%;
+}
 

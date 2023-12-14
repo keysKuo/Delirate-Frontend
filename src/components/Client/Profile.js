@@ -4,6 +4,7 @@ import { Dropdown, Icon } from 'semantic-ui-react';
 import alter from '../../static/alter.png';
 
 export default function Profile({ isShowCart, setIsShowCart, info, ...props }) {
+    console.log(info)
     // Event handler for menu item click
     const handleMenuItemClick = (itemName) => {
         // You can handle different cases based on the itemName
@@ -18,6 +19,7 @@ export default function Profile({ isShowCart, setIsShowCart, info, ...props }) {
                 break;
             case 'store':
                 console.log('Store clicked');
+                window.location.href = '/admin';
                 // Your code to handle store click
                 break;
             case 'logout':
@@ -35,7 +37,7 @@ export default function Profile({ isShowCart, setIsShowCart, info, ...props }) {
             <Avatar
                 css={{ width: '40px', height: '40px', marginRight: '10px', marginLeft: '30px' }}
                 size="small"
-                src={info ? info.avatar : alter}
+                src={info.avatar || alter}
             />
             <Dropdown icon="false" text={<Text css={{ fontSize: '15px', paddingTop: '24px', minWidth: '180px', color: '#ccc' }}>{info ? info.name : 'Unknown'} <Icon name='angle down' /></Text>}>
                 <Dropdown.Menu style={{ top: 60 }}>

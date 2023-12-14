@@ -31,6 +31,7 @@ function ItemCard({ items }) {
 	const AddToCart = (item) => {
 		let newItem = {
 			_id: item._id,
+			store: item.distributor,
 			model: item.model,
 			sku: item.sku,
 			image: item.image,
@@ -117,11 +118,11 @@ function ItemCard({ items }) {
 										</div>
 										<div className="d-flex justify-content-between mb-2">
 											<div className="ms-auto text-warning mt-1">
-												<MDBIcon fas icon="star" />
-												<MDBIcon fas icon="star" />
-												<MDBIcon fas icon="star" />
-												<MDBIcon fas icon="star" />
-												<MDBIcon fas icon="star" />
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
 											</div>
 										</div>
 									</div>

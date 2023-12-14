@@ -1,8 +1,12 @@
 import { Link } from 'react-router-dom';
 import '../../assets/success.css';
-
+import { useEffect } from 'react';
 export default function SuccessScreen() {
-	// localStorage.removeItem('cartItems');
+	
+	useEffect(() => {
+		localStorage.removeItem('cartItems');
+	}, [])
+
 	return (
 		<section className="login-main-wrapper">
 			<div className="main-container">
