@@ -154,7 +154,7 @@ export default function Navigation() {
 					<ul className="custom-scrollbar">
 						<li className="logo-sn waves-effect py-3">
 							<div className="text-center center-box">
-								<Link href="#" className="pl-0">
+								<Link to="/" className="pl-0">
 									<Image
 										style={{ width: "70%" }}
 										src={logo2}
