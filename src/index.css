@@ -535,3 +535,7 @@ i.fa-star {
 	width: 100%;
 }
 
+.banner-box {
+	width: 80%;
+	position: relative;
+}

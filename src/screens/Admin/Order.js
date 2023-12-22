@@ -41,7 +41,7 @@ export default function OrderScreen() {
 
 	return (
 		<>
-			<Container style={{ transform: "translateX(10%)" }}>
+			<Container>
 				<div
 					style={{
 						paddingTop: "60px",
