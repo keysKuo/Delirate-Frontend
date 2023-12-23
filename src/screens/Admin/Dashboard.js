@@ -20,7 +20,6 @@ export default function DashboardScreen() {
                 <div className="banner-box">
                     <img src={`${apiUrl}/uploads${user.store.banner}`} />
                     <FilePicker setSelectedFile={setSelectedFile} />
-
                 </div>               
             </div>
             <div>
