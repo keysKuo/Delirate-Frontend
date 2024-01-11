@@ -5,8 +5,6 @@ Client website where customer of Delirate can go shopping. Besides, organization
 
 <img src="public/capture.png">
 
-<iframe src="https://player.vimeo.com/video/890052981?h=fb471474c9" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-<p><a href="https://vimeo.com/890052981">Delirate Intro</a> from <a href="https://vimeo.com/user212008353">Dung Kuo Nhan</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
 
 ### Built With
 
